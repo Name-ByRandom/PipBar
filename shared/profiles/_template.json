@@ -1,0 +1,71 @@
+{
+  "_readme": [
+    "这是 PipBar 的显示器配置档。请按你的显示器填写。",
+    "",
+    "必填：profile.vendor / profile.model / profile.vendorIdHex",
+    "  vendorIdHex 用 ddcwatch 查（在终端跑 tools/ddcwatch，标题会显示 EDID 信息），",
+    "  或从 EDID 的厂商字段读取（Dell=10AC, LG=10DD, ASUS=0A03, Samsung=0ACE 等）。",
+    "",
+    "pbpModes：如果你的显示器支持 PIP/PBP，填入各布局对应的 VCP 0xE9 值。",
+    "  怎么找这些值：",
+    "    1. 运行 tools/ddcwatch watch",
+    "    2. 用显示器实体按键在 OSD 里逐个切换布局",
+    "    3. ddcwatch 会打印每次变化对应的码值",
+    "  显示器不支持 PIP 就留空数组 []，界面会隐藏这一区。",
+    "",
+    "inputs：你的显示器有哪些视频输入。填不出来的项删掉。",
+    "  标准值：DP1=15 DP2=16 HDMI1=17 HDMI2=18 USB-C=27",
+    "",
+    "quirks：把你踩到的坑记在这里，方便以后排查。",
+    "  格式参考本文件里的示例，或看 shared/NOTES.md 里的常见问题。"
+  ],
+
+  "profile": {
+    "_comment": "文件名建议用 EDID 里的显示器名（运行 tools/ddcwatch 查看），匹配时会忽略大小写和空格",
+    "edidName": "在此填 EDID 显示器名",
+    "vendor": "在此填厂商名，如 Dell / LG / ASUS",
+    "model": "在此填型号",
+    "vendorIdHex": "",
+    "connection": "在此填连接方式，如 DisplayPort Alt Mode / HDMI",
+    "verified": "",
+    "verificationMethod": ""
+  },
+
+  "vcp": {
+    "_comment": "标准 VCP 码，通常无需修改",
+    "brightness": "0x10",
+    "contrast": "0x12",
+    "videoInput": "0x60",
+    "audioVolume": "0x62",
+    "audioMute": "0x8D",
+    "pbpInput": "0xE8",
+    "pbpMode": "0xE9"
+  },
+
+  "pbpModes": {
+    "_comment": "把你的显示器支持的布局填进来。value 必须是实测值，不要照抄别人的。",
+    "modes": []
+  },
+
+  "inputs": [
+    { "value": 15, "id": "dp1",   "label": "DisplayPort 1", "short": "DP1" },
+    { "value": 16, "id": "dp2",   "label": "DisplayPort 2", "short": "DP2" },
+    { "value": 17, "id": "hdmi1", "label": "HDMI 1",        "short": "HDMI1" },
+    { "value": 18, "id": "hdmi2", "label": "HDMI 2",        "short": "HDMI2" },
+    { "value": 27, "id": "usbc",  "label": "USB-C",         "short": "USB-C" }
+  ],
+
+  "quirks": [],
+
+  "readValidation": {
+    "_comment": "DDC/CI 标准要求，各平台实现都应遵守。",
+    "checks": [
+      "reply[0] == 0x6E   (源地址)",
+      "reply[2] == 0x02   (Get VCP Feature Reply opcode)",
+      "reply[3] == 0x00   (result code: 无错误)",
+      "reply[4] == 请求的 VCP 码  (回显校验)",
+      "checksum: 0x50 异或 reply[0..9] == reply[10]",
+      "max != 0"
+    ]
+  }
+}

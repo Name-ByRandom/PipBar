@@ -1,0 +1,103 @@
+{
+  "$schema": "./monitor-profile.schema.json",
+  "profile": {
+    "vendor": "Dell",
+    "model": "S3423DWC",
+    "vendorIdHex": "10AC",
+    "connection": {
+      "mac": "DisplayPort Alt Mode (USB-C)",
+      "note": "Windows 端走 HDMI，DDC/CI 是否响应需另行验证"
+    },
+    "verified": "2026-10-04",
+    "verificationMethod": "实体按键切换布局 + 程序读回 VCP 0xE9 逐一确认"
+  },
+
+  "vcp": {
+    "brightness": "0x10",
+    "contrast": "0x12",
+    "videoInput": "0x60",
+    "audioVolume": "0x62",
+    "audioMute": "0x8D",
+    "pbpInput": "0xE8",
+    "pbpMode": "0xE9"
+  },
+
+  "pbpModes": {
+    "comment": "显示器的完整 PBP 能力。m1ddc 文档标注的 43/44 在本机是错的（那是别的 Dell 型号）。",
+    "modes": [
+      { "value": 0,  "id": "off",     "label": "关闭",        "icon": "rectangle.slash" },
+      { "value": 36, "id": "half",    "label": "50 : 50",     "icon": "rectangle.split.2x1" },
+      { "value": 41, "id": "ratio25_75", "label": "25 : 75",  "icon": "rectangle.split.1x2" },
+      { "value": 42, "id": "ratio75_25", "label": "75 : 25",  "icon": "rectangle.split.2x1" },
+      { "value": 45, "id": "ratio33_67", "label": "33 : 67",  "icon": "rectangle.split.1x2" },
+      { "value": 46, "id": "ratio67_33", "label": "67 : 33",  "icon": "rectangle.split.2x1" },
+      { "value": 33, "id": "pipTopRightSmall", "label": "PIP 右上小窗", "icon": "pip" },
+      { "value": 34, "id": "pipTopRightLarge", "label": "PIP 右上大窗", "icon": "pip.exit" }
+    ]
+  },
+
+  "inputs": [
+    { "value": 27, "id": "usbc",  "label": "USB-C",   "short": "USB-C" },
+    { "value": 17, "id": "hdmi1", "label": "HDMI 1",  "short": "HDMI1" },
+    { "value": 18, "id": "hdmi2", "label": "HDMI 2",  "short": "HDMI2" },
+    { "value": 15, "id": "dp1",   "label": "DisplayPort 1", "short": "DP1" },
+    { "value": 16, "id": "dp2",   "label": "DisplayPort 2", "short": "DP2" }
+  ],
+
+  "quirks": [
+    {
+      "id": "pbpCodes",
+      "severity": "high",
+      "summary": "PIP/PBP 码值与 m1ddc 文档不符",
+      "detail": "m1ddc 文档标注 43=26:74、44=74:26，并列出 33/34/36。本机实际只支持 0/33/34/36/41/42/45/46；25:75=41、75:25=42。43/44 写入后读回不变（被拒绝）。",
+      "action": "以本文件的 pbpModes 为准，不要引用 m1ddc 文档"
+    },
+    {
+      "id": "inputSourceDoubleByte",
+      "severity": "medium",
+      "summary": "输入源码在两个字节里各放一遍",
+      "detail": "读 0x60 时 USB-C 返回 0x1B1B（27 重复两遍），而非标准的 0x001B。直接拿完整值匹配枚举会永远匹配不上。",
+      "action": "解析时取低位字节 value & 0xFF"
+    },
+    {
+      "id": "writeThrottle",
+      "severity": "high",
+      "summary": "连续写入会把 DDC 控制器写堵",
+      "detail": "批量连续写 20 个值时只有第 1 个生效，之后全部无响应（间隔 150ms 仍然堵塞）。每个值用独立进程写则每次都成功。显示器切画面期间 DDC 也会短暂完全无响应。",
+      "action": "所有写入串行化，两次之间至少间隔 150ms；写完不要立刻读回验证"
+    },
+    {
+      "id": "dcsWriteDismissesOSD",
+      "severity": "low",
+      "summary": "DDC 写入会自动关闭显示器 OSD 菜单",
+      "detail": "显示器 OSD 菜单打开时进行 DDC 流量，可能把控制器彻底写聋（完全无 I2C ack）。恢复方法：打开一次 OSD 菜单，或拔插视频线，或断电 10 秒。",
+      "action": "如果写入全部失败，先尝试打开显示器 OSD 菜单唤醒控制器"
+    },
+    {
+      "id": "pbpModeMaxIsUseless",
+      "severity": "low",
+      "summary": "0xE9 返回的 max 恒为 255",
+      "detail": "实际可用值只在 0-46 之间。不能用 max 做范围校验。",
+      "action": "按本文件 pbpModes 的枚举判断有效性"
+    },
+    {
+      "id": "audioMuteMax",
+      "severity": "low",
+      "summary": "静音码 0x8D 的 max 是 65535",
+      "detail": "不是常见的 1/2。判断静音状态要看 current：1=静音，2=取消静音，0=未静音。",
+      "action": "用 current == 1 判断静音，不要依赖 max"
+    }
+  ],
+
+  "readValidation": {
+    "comment": "DDC/CI 读回 8 字节响应必须全部校验，缺一不可（m1ddc 缺失这些校验，所以读数会返回 110 假值）",
+    "checks": [
+      "reply[0] == 0x6E   (源地址)",
+      "reply[2] == 0x02   (Get VCP Feature Reply opcode)",
+      "reply[3] == 0x00   (result code: 无错误)",
+      "reply[4] == 请求的 VCP 码  (回显校验 — 最重要)",
+      "checksum: 0x50 异或 reply[0..9] == reply[10]",
+      "max != 0"
+    ]
+  }
+}

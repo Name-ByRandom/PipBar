@@ -1,0 +1,40 @@
+# 编译产物
+build/
+dist/
+*.o
+*.swiftmodule
+*.dSYM/
+
+# Swift 模块缓存（应该放在 $TMPDIR，但保险起见）
+.swcache/
+
+# 图标生成中间产物（只保留最终的 .icns）
+macos/.iconwork/*
+!macos/.iconwork/PipBar.icns
+
+# 运行时日志
+*.log
+pip-server.log
+
+# macOS
+.DS_Store
+._*
+
+# 码表描述的是显示器而非机器，可以入库共享。
+# 想只在本机保留自己的配置时，取消下面这行的注释：
+# shared/profiles/*.json
+
+# 调试二进制（用 tools/build-app.sh --tools 重新编译，不入库）
+# 保留 .swift 源码即可
+macos/tools/ddcwatch
+macos/tools/ddconce
+macos/tools/ddcaudio
+macos/tools/ddcfull
+macos/tools/ddcinput
+macos/tools/ddcvol
+macos/tools/ddcprobe
+
+# 编辑器
+.vscode/
+.idea/
+*.swp
