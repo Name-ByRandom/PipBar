@@ -1,0 +1,107 @@
+<layer id="wrap">
+
+  <stack id="grid" direction="vertical" gap="4%" padding="4%" fill="true">
+
+    <stack id="row0" direction="horizontal" gap="4%" mainSize="0.42">
+
+      <layer id="pp0" interactive="true" mainSize="0.46">
+
+        <!-- 关闭 -->
+        <rect id="pp0b" coordinates="local" x="0%" y="0%" width="100%" height="100%" corner="rounded" cornerRadius="10%" color="#242424">
+          <style when="pbp == 0" color="#3d7fd6" />
+        </rect>
+        <rect id="pp0f" coordinates="local" x="2%" y="2.5%" width="96%" height="95%" corner="rounded" cornerRadius="9%" color="#242424">
+          <style when="pbp == 0" color="#1e3a5c" />
+        </rect>
+        <rect id="pp0k" coordinates="local" x="29%" y="8%" width="42%" height="44%" corner="rounded" cornerRadius="3%" color="transparent" strokeColor="#9aa0a6" strokeWidth="1.2%">
+          <style when="pbp == 0" strokeColor="#8fc7ff" />
+        </rect>
+        <line id="pp0d" coordinates="local" x1="31.5%" y1="12%" x2="68.5%" y2="48%" thickness="1.2%" color="#9aa0a6">
+          <style when="pbp == 0" color="#8fc7ff" />
+        </line>
+        <stack id="pp0c" direction="vertical" fill="true" padding="4%" justify="end">
+          <text id="pp0t" size="11%" minSize="0.07" color="#9aa0a6" align="center" wrap="false">关闭
+            <style when="pbp == 0" color="#8fc7ff" />
+          </text>
+        </stack>
+
+      </layer>
+
+      <layer id="pp1" interactive="true" mainSize="0.46">
+
+        <!-- 5 : 5 -->
+        <rect id="pp1b" coordinates="local" x="0%" y="0%" width="100%" height="100%" corner="rounded" cornerRadius="10%" color="#242424">
+          <style when="pbp == 36" color="#3d7fd6" />
+        </rect>
+        <rect id="pp1f" coordinates="local" x="2%" y="2.5%" width="96%" height="95%" corner="rounded" cornerRadius="9%" color="#242424">
+          <style when="pbp == 36" color="#1e3a5c" />
+        </rect>
+        <rect id="pp1k" coordinates="local" x="29%" y="8%" width="42%" height="44%" corner="rounded" cornerRadius="3%" color="transparent" strokeColor="#9aa0a6" strokeWidth="1.2%">
+          <style when="pbp == 36" strokeColor="#8fc7ff" />
+        </rect>
+        <line id="pp1d" coordinates="local" x1="50%" y1="10.5%" x2="50%" y2="49.5%" thickness="1.2%" color="#9aa0a6">
+          <style when="pbp == 36" color="#8fc7ff" />
+        </line>
+        <stack id="pp1c" direction="vertical" fill="true" padding="4%" justify="end">
+          <text id="pp1t" size="11%" minSize="0.07" color="#9aa0a6" align="center" wrap="false">5 : 5
+            <style when="pbp == 36" color="#8fc7ff" />
+          </text>
+        </stack>
+
+      </layer>
+
+    </stack>
+
+    <stack id="row1" direction="horizontal" gap="4%" mainSize="0.42">
+
+      <layer id="pp2" interactive="true" mainSize="0.46">
+
+        <!-- 1 : 3 -->
+        <rect id="pp2b" coordinates="local" x="0%" y="0%" width="100%" height="100%" corner="rounded" cornerRadius="10%" color="#242424">
+          <style when="pbp == 41" color="#3d7fd6" />
+        </rect>
+        <rect id="pp2f" coordinates="local" x="2%" y="2.5%" width="96%" height="95%" corner="rounded" cornerRadius="9%" color="#242424">
+          <style when="pbp == 41" color="#1e3a5c" />
+        </rect>
+        <rect id="pp2k" coordinates="local" x="29%" y="8%" width="42%" height="44%" corner="rounded" cornerRadius="3%" color="transparent" strokeColor="#9aa0a6" strokeWidth="1.2%">
+          <style when="pbp == 41" strokeColor="#8fc7ff" />
+        </rect>
+        <line id="pp2d" coordinates="local" x1="40%" y1="10.5%" x2="40%" y2="49.5%" thickness="1.2%" color="#9aa0a6">
+          <style when="pbp == 41" color="#8fc7ff" />
+        </line>
+        <stack id="pp2c" direction="vertical" fill="true" padding="4%" justify="end">
+          <text id="pp2t" size="11%" minSize="0.07" color="#9aa0a6" align="center" wrap="false">1 : 3
+            <style when="pbp == 41" color="#8fc7ff" />
+          </text>
+        </stack>
+
+      </layer>
+
+      <layer id="pp3" interactive="true" mainSize="0.46">
+
+        <!-- 3 : 1 -->
+        <rect id="pp3b" coordinates="local" x="0%" y="0%" width="100%" height="100%" corner="rounded" cornerRadius="10%" color="#242424">
+          <style when="pbp == 42" color="#3d7fd6" />
+        </rect>
+        <rect id="pp3f" coordinates="local" x="2%" y="2.5%" width="96%" height="95%" corner="rounded" cornerRadius="9%" color="#242424">
+          <style when="pbp == 42" color="#1e3a5c" />
+        </rect>
+        <rect id="pp3k" coordinates="local" x="29%" y="8%" width="42%" height="44%" corner="rounded" cornerRadius="3%" color="transparent" strokeColor="#9aa0a6" strokeWidth="1.2%">
+          <style when="pbp == 42" strokeColor="#8fc7ff" />
+        </rect>
+        <line id="pp3d" coordinates="local" x1="60%" y1="10.5%" x2="60%" y2="49.5%" thickness="1.2%" color="#9aa0a6">
+          <style when="pbp == 42" color="#8fc7ff" />
+        </line>
+        <stack id="pp3c" direction="vertical" fill="true" padding="4%" justify="end">
+          <text id="pp3t" size="11%" minSize="0.07" color="#9aa0a6" align="center" wrap="false">3 : 1
+            <style when="pbp == 42" color="#8fc7ff" />
+          </text>
+        </stack>
+
+      </layer>
+
+    </stack>
+
+  </stack>
+
+</layer>

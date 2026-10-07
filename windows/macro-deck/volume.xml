@@ -1,0 +1,29 @@
+<layer id="volwrap">
+  <stack id="volpanel" direction="vertical" gap="4%" padding="5%" justify="center" fill="true">
+
+    <!-- 上排：图标 + 名称 + 数值 -->
+    <stack id="volhead" direction="horizontal" gap="4%" align="center" mainSize="0.42" fill="true">
+      <stack id="voliconbox" mainSize="0.18" fill="true" justify="center" align="center">
+        <image id="volicon" source="icon-pack:01a10828-c88d-7fbe-9fcc-3d0f3a765a5a" size="80%" fit="contain" color="#c8ccd0" />
+      </stack>
+      <text id="vollabel" size="15%" minSize="0.08" weight="medium" color="#e8e8e8" mainSize="0.5">音量</text>
+      <text id="volvalue" size="17%" minSize="0.09" weight="semibold" align="end" color="#e8e8e8" mainSize="0.32">{{volume:0}}</text>
+    </stack>
+
+    <!-- 下排：小图标 + 滑动条 + 大图标 -->
+    <stack id="volrail" direction="horizontal" gap="3%" align="center" mainSize="0.5" fill="true">
+
+      <stack id="volico1" mainSize="0.1" fill="true" justify="center" align="center">
+        <image id="volimg1" source="icon-pack:01a10828-c88c-7272-a43b-441f368fcb80" size="50%" fit="contain" color="#8a8f94" />
+      </stack>
+
+      <slider id="volsld" key="volume" min="0" max="100" step="10" direction="horizontal" thickness="5%" color="#2f7fff" mainSize="0.72" interactive="true" />
+
+      <stack id="volico2" mainSize="0.1" fill="true" justify="center" align="center">
+        <image id="volimg2" source="icon-pack:01a10828-c88c-7ac1-b3b4-81f46e79bcd5" size="50%" fit="contain" color="#c8ccd0" />
+      </stack>
+
+    </stack>
+
+  </stack>
+</layer>

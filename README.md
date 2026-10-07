@@ -89,14 +89,21 @@ pipbar/
 │   └── NOTES.md                  通用踩坑记录
 │
 ├── macos/                      macOS 实现
-│   ├── src/                       Swift 源码
+│   ├── src/                       Swift 源码（自研 DDC/CI）
 │   ├── tools/                     构建脚本 + 调试工具 + 图标生成
 │   ├── .iconwork/                 生成的 app 图标
-│   └── README.md                  macOS 详细文档
+│   └── README.md
 │
-├── windows/                    Windows 实现（待做）
+├── windows/                    Windows 实现（借用 Twinkle Tray）
+│   ├── tools/tt.ps1               Twinkle Tray 管道客户端
+│   ├── macro-deck/                Macro Deck 3 自定义视图布局
+│   ├── deprecated/                已废弃：P/Invoke 探测脚本
+│   └── README.md
+│
 └── LICENSE                     MIT
 ```
+
+两端共用 `shared/profiles/` 里的码表 —— 因为码表描述的是**显示器**，不是某台机器。
 
 配置档在构建时会被拷进 app bundle 的 `Contents/Resources/profiles/`，
 所以装好的 app 不依赖源码目录。用户自己的码表放
@@ -143,11 +150,14 @@ log stream --predicate 'subsystem == "com.pipbar.ddc"' --level debug
 
 ## 已知限制
 
-- **仅支持 macOS on Apple Silicon**。依赖 IOKit 私有 API（`IOAVService*`），
+- **macOS 端仅支持 Apple Silicon**。依赖 IOKit 私有 API（`IOAVService*`），
   Intel Mac 不适用。
 - **只支持 DP Alt Mode（USB-C）连接**。m1ddc 类工具无法通过 HDMI 控制。
-- **多显示器**未做选择界面。选取逻辑：先按 EDID 显示器名找配置档，
-  找到就用其 `vendorIdHex` 匹配；否则直接用第一块外接屏。
+- **Windows 端需要 Twinkle Tray 运行** —— 它借用了 Twinkle Tray 已验证的 DDC 实现，
+  详见 [windows/README.md](windows/README.md)。
+- **多显示器**未做选择界面。按 EDID 显示器名匹配配置档，匹配不到就用第一块外接屏。
+- **不要让两台机器同时控 DDC。** 会争抢 I2C 总线，可能让显示器 DDC 控制器无响应
+  （表现为所有 VCP 读取失败；关闭 PIP/PBP 通常能恢复）。
 
 ## License
 

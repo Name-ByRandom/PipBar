@@ -1,0 +1,45 @@
+<layer id="wrap" >
+  <stack id="panel" direction="vertical" gap="4%" padding="8%" justify="center" fill="true">
+
+    <stack id="rowB" direction="vertical" gap="6%" mainSize="0.42" fill="true">
+
+      <stack id="headB" direction="horizontal" justify="space-between" align="center" mainSize="0.34">
+        <text id="lblB" size="13%" minSize="0.07" weight="medium" color="#e8e8e8">亮度</text>
+        <text id="valB" size="15%" minSize="0.08" weight="semibold" align="end" color="#e8e8e8">{{brightness:0}}</text>
+      </stack>
+
+      <stack id="railB" direction="horizontal" gap="3%" align="center" mainSize="0.52">
+        <stack id="icoB1" mainSize="0.1" fill="true" justify="center" align="center">
+          <image id="imgB1" source="icon-pack:01a10828-afef-7edf-a0e7-0d5a10521427" size="50%" fit="contain" color="#8a8f94" />
+        </stack>
+        <slider id="sldB" key="brightness" min="0" max="100" step="5" direction="horizontal" thickness="5%" color="#2f7fff" interactive="true" />
+        <stack id="icoB2" mainSize="0.1" fill="true" justify="center" align="center">
+          <image id="imgB2" source="icon-pack:01a10828-b007-7b9d-8542-a7c714988c74" size="50%" fit="contain" color="#c8ccd0" />
+        </stack>
+      </stack>
+
+    </stack>
+
+    <stack id="rowC" direction="vertical" gap="6%" mainSize="0.42" fill="true">
+
+      <stack id="headC" direction="horizontal" justify="space-between" align="center" mainSize="0.34">
+        <text id="lblC" size="13%" minSize="0.07" weight="medium" color="#e8e8e8">对比度</text>
+        <text id="valC" size="15%" minSize="0.08" weight="semibold" align="end" color="#e8e8e8">{{contrast:0}}</text>
+      </stack>
+
+      <stack id="railC" direction="horizontal" gap="3%" align="center" mainSize="0.52">
+        <stack id="icoC1" mainSize="0.1" fill="true" justify="center" align="center">
+          <image id="imgC1" source="icon-pack:01a10828-b3f9-7a3c-ab7e-68c73ce2a5c0" size="50%" fit="contain" color="#8a8f94" />
+        </stack>
+        <slider id="sldC" value="{{contrast}}" min="0" max="100" direction="horizontal" thickness="4%" color="#2f7fff">
+          <style when="contrast == null" color="#3a3a3a" />
+        </slider>
+        <stack id="icoC2" mainSize="0.1" fill="true" justify="center" align="center">
+          <image id="imgC2" source="icon-pack:01a10828-b3f9-7a3c-ab7e-68c73ce2a5c0" size="50%" fit="contain" color="#c8ccd0" />
+        </stack>
+      </stack>
+
+    </stack>
+
+  </stack>
+</layer>

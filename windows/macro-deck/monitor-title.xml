@@ -1,0 +1,8 @@
+<layer id="wrap">
+  <stack id="panel" direction="vertical" gap="6%" padding="8%" justify="center" fill="true">
+
+    <text id="ttl" size="13%" minSize="0.07" weight="medium" align="center" color="#9aa0a6">显示器</text>
+    <text id="nm" size="14%" minSize="0.07" weight="semibold" align="center" wrap="true" color="#e8e8e8">{{name}}</text>
+
+  </stack>
+</layer>

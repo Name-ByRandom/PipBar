@@ -1,0 +1,44 @@
+<layer id="wrap">
+  <stack id="list" direction="vertical" gap="3%" padding="4%" justify="center" fill="true">
+    <text id="title" size="12%" wrap="true" align="center">PIP画面</text>
+    <layer id="row1" interactive="true" mainSize="0.3" fill="true">
+      <rect id="bg1" x="0" y="0" width="100%" height="100%" corner="rounded" cornerRadius="5%" color="#242424">
+        <style when="input == 27" color="#2d4a6b" />
+      </rect>
+      <stack id="c1" direction="horizontal" fill="true" padding="8%" align="center" justify="center">
+        <text id="t1" size="15%" minSize="0.12" color="#9aa0a6" align="center">USB-C
+          
+        <style when="input == 27" color="#8fc7ff" /></text>
+      </stack>
+      <stack id="k1" direction="horizontal" fill="true" padding="8%" align="center" justify="end">
+        <text id="m1" size="14%" minSize="0.09" color="#8fc7ff" align="end" visibleWhen="input == 27">●</text>
+      </stack>
+    </layer>
+    <layer id="row2" interactive="true" mainSize="0.3" fill="true">
+      <rect id="bg2" x="0" y="0" width="100%" height="100%" corner="rounded" cornerRadius="5%" color="#242424">
+        <style when="input == 17" color="#2d4a6b" />
+      </rect>
+      <stack id="c2" direction="horizontal" fill="true" padding="8%" align="center" justify="center">
+        <text id="t2" size="15%" minSize="0.12" color="#9aa0a6" align="center">HDMI 1
+          
+        <style when="input == 17" color="#8fc7ff" /></text>
+      </stack>
+      <stack id="k2" direction="horizontal" fill="true" padding="8%" align="center" justify="end">
+        <text id="m2" size="17%" minSize="0.09" color="#8fc7ff" align="end" visibleWhen="input == 17">●</text>
+      </stack>
+    </layer>
+    <layer id="row3" interactive="true" mainSize="0.3" fill="true">
+      <rect id="bg3" x="0" y="0" width="100%" height="100%" corner="rounded" cornerRadius="5%" color="#242424">
+        <style when="input == 18" color="#2d4a6b" />
+      </rect>
+      <stack id="c3" direction="horizontal" fill="true" padding="8%" align="center" justify="center">
+        <text id="t3" size="15%" minSize="0.12" color="#9aa0a6" align="center">HDMI 2
+          
+        <style when="input == 18" color="#8fc7ff" /></text>
+      </stack>
+      <stack id="k3" direction="horizontal" fill="true" padding="8%" align="center" justify="end">
+        <text id="m3" size="17%" minSize="0.09" color="#8fc7ff" align="end" visibleWhen="input == 18">●</text>
+      </stack>
+    </layer>
+  </stack>
+</layer>

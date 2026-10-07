@@ -1,0 +1,107 @@
+<layer id="wrap">
+
+  <stack id="grid" direction="vertical" gap="4%" padding="4%" fill="true">
+
+    <stack id="row0" direction="horizontal" gap="4%" mainSize="0.42">
+
+      <layer id="pi0" interactive="true" mainSize="0.46">
+
+        <!-- 1 : 2 -->
+        <rect id="pi0b" coordinates="local" x="0%" y="0%" width="100%" height="100%" corner="rounded" cornerRadius="10%" color="#242424">
+          <style when="pbp == 45" color="#3d7fd6" />
+        </rect>
+        <rect id="pi0f" coordinates="local" x="2%" y="2.5%" width="96%" height="95%" corner="rounded" cornerRadius="9%" color="#242424">
+          <style when="pbp == 45" color="#1e3a5c" />
+        </rect>
+        <rect id="pi0k" coordinates="local" x="29%" y="8%" width="42%" height="44%" corner="rounded" cornerRadius="3%" color="transparent" strokeColor="#9aa0a6" strokeWidth="1.2%">
+          <style when="pbp == 45" strokeColor="#8fc7ff" />
+        </rect>
+        <line id="pi0d" coordinates="local" x1="45%" y1="10.5%" x2="45%" y2="49.5%" thickness="1.2%" color="#9aa0a6">
+          <style when="pbp == 45" color="#8fc7ff" />
+        </line>
+        <stack id="pi0c" direction="vertical" fill="true" padding="4%" justify="end">
+          <text id="pi0t" size="11%" minSize="0.07" color="#9aa0a6" align="center" wrap="false">1 : 2
+            <style when="pbp == 45" color="#8fc7ff" />
+          </text>
+        </stack>
+
+      </layer>
+
+      <layer id="pi1" interactive="true" mainSize="0.46">
+
+        <!-- 2 : 1 -->
+        <rect id="pi1b" coordinates="local" x="0%" y="0%" width="100%" height="100%" corner="rounded" cornerRadius="10%" color="#242424">
+          <style when="pbp == 46" color="#3d7fd6" />
+        </rect>
+        <rect id="pi1f" coordinates="local" x="2%" y="2.5%" width="96%" height="95%" corner="rounded" cornerRadius="9%" color="#242424">
+          <style when="pbp == 46" color="#1e3a5c" />
+        </rect>
+        <rect id="pi1k" coordinates="local" x="29%" y="8%" width="42%" height="44%" corner="rounded" cornerRadius="3%" color="transparent" strokeColor="#9aa0a6" strokeWidth="1.2%">
+          <style when="pbp == 46" strokeColor="#8fc7ff" />
+        </rect>
+        <line id="pi1d" coordinates="local" x1="55%" y1="10.5%" x2="55%" y2="49.5%" thickness="1.2%" color="#9aa0a6">
+          <style when="pbp == 46" color="#8fc7ff" />
+        </line>
+        <stack id="pi1c" direction="vertical" fill="true" padding="4%" justify="end">
+          <text id="pi1t" size="11%" minSize="0.07" color="#9aa0a6" align="center" wrap="false">2 : 1
+            <style when="pbp == 46" color="#8fc7ff" />
+          </text>
+        </stack>
+
+      </layer>
+
+    </stack>
+
+    <stack id="row1" direction="horizontal" gap="4%" mainSize="0.42">
+
+      <layer id="pi2" interactive="true" mainSize="0.46">
+
+        <!-- 大图 -->
+        <rect id="pi2b" coordinates="local" x="0%" y="0%" width="100%" height="100%" corner="rounded" cornerRadius="10%" color="#242424">
+          <style when="pbp == 34" color="#3d7fd6" />
+        </rect>
+        <rect id="pi2f" coordinates="local" x="2%" y="2.5%" width="96%" height="95%" corner="rounded" cornerRadius="9%" color="#242424">
+          <style when="pbp == 34" color="#1e3a5c" />
+        </rect>
+        <rect id="pi2k" coordinates="local" x="29%" y="8%" width="28%" height="30%" corner="rounded" cornerRadius="3%" color="transparent" strokeColor="#9aa0a6" strokeWidth="1.2%">
+          <style when="pbp == 34" strokeColor="#8fc7ff" />
+        </rect>
+        <rect id="pi2s" coordinates="local" x="42%" y="26%" width="30%" height="27%" corner="rounded" cornerRadius="3%" color="#9aa0a6">
+          <style when="pbp == 34" color="#8fc7ff" />
+        </rect>
+        <stack id="pi2c" direction="vertical" fill="true" padding="4%" justify="end">
+          <text id="pi2t" size="11%" minSize="0.07" color="#9aa0a6" align="center" wrap="false">大图
+            <style when="pbp == 34" color="#8fc7ff" />
+          </text>
+        </stack>
+
+      </layer>
+
+      <layer id="pi3" interactive="true" mainSize="0.46">
+
+        <!-- 小图 -->
+        <rect id="pi3b" coordinates="local" x="0%" y="0%" width="100%" height="100%" corner="rounded" cornerRadius="10%" color="#242424">
+          <style when="pbp == 33" color="#3d7fd6" />
+        </rect>
+        <rect id="pi3f" coordinates="local" x="2%" y="2.5%" width="96%" height="95%" corner="rounded" cornerRadius="9%" color="#242424">
+          <style when="pbp == 33" color="#1e3a5c" />
+        </rect>
+        <rect id="pi3k" coordinates="local" x="29%" y="8%" width="28%" height="30%" corner="rounded" cornerRadius="3%" color="transparent" strokeColor="#9aa0a6" strokeWidth="1.2%">
+          <style when="pbp == 33" strokeColor="#8fc7ff" />
+        </rect>
+        <rect id="pi3s" coordinates="local" x="44%" y="28%" width="27%" height="24%" corner="rounded" cornerRadius="3%" color="transparent" strokeColor="#9aa0a6" strokeWidth="1.2%">
+          <style when="pbp == 33" strokeColor="#8fc7ff" />
+        </rect>
+        <stack id="pi3c" direction="vertical" fill="true" padding="4%" justify="end">
+          <text id="pi3t" size="11%" minSize="0.07" color="#9aa0a6" align="center" wrap="false">小图
+            <style when="pbp == 33" color="#8fc7ff" />
+          </text>
+        </stack>
+
+      </layer>
+
+    </stack>
+
+  </stack>
+
+</layer>
